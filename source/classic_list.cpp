@@ -184,12 +184,16 @@ Node *listHead(List *list)
 {
     LIST_VERIFY;
 
+    if (list->header->next == list->header) return NULL;
+
     return list->header->next;
 }
 
 Node *listTail(List *list)
 {
     LIST_VERIFY;
+
+    if (list->header->prev == list->header) return NULL;
 
     return list->header->prev;
 }
@@ -271,14 +275,14 @@ Node *listPushBack(List *list, elem_t value)
 {
     LIST_VERIFY;
 
-    return listInsertAfter(list, listTail(list), value);
+    return listInsertAfter(list, list->header->prev, value);
 }
 
 Node *listPushFront(List *list, elem_t value)
 {
     LIST_VERIFY;
 
-    return listInsertBefore(list, listHead(list), value);
+    return listInsertBefore(list, list->header->next, value);
 }
 
 bool listIsEmpty(List *list)
@@ -286,4 +290,11 @@ bool listIsEmpty(List *list)
     LIST_VERIFY;
 
     return list->size == 0;
+}
+
+int listSize(List *list)
+{
+    LIST_VERIFY;
+
+    return list->size;
 }

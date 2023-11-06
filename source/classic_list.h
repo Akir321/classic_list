@@ -43,7 +43,18 @@ Node *listPushFront(List *list, elem_t value);
 int listDel(List *list, Node *node);
 
 bool listIsEmpty(List *list);
+int  listSize   (List *list);
 
 #define LIST_DUMP(list) listDump(list, __FILE__, __LINE__, __func__)
+
+#include "graphic_dump.h"
+
+#ifdef  __GRAPHIC_DUMP_H__
+#define LIST_GR_DUMP(list) listGraphicDump(list)
+
+#else
+#define LIST_GR_DUMP(list)
+
+#endif //__GRAPHIC_DUMP_H__
 
 #endif //__CLASSIC_LIST_H__

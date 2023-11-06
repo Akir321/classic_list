@@ -9,7 +9,4 @@ char *createDumpFileName(int fileNumber, int *fileNameLength);
 
 int createListGraphicDumpPng(char *fileName, int fileNameLength);
 
-struct timeHolder;
-timeHolder getTime(void);
-
 #endif //__GRAPHIC_DUMP_H__

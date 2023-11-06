@@ -11,10 +11,12 @@ CXX_FLAGS = -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef -Wfloat-
 SRC_DIR  = source/
 OBJ_DIR  = object/
 
-INCLUDES =  $(SRC_DIR)classic_list.h           
+INCLUDES =  $(SRC_DIR)classic_list.h \
+			$(SRC_DIR)graphic_dump.h
 
-OBJECTS  =  $(OBJ_DIR)test_list.o              \
-		    $(OBJ_DIR)classic_list.o           
+OBJECTS  =  $(OBJ_DIR)test_list.o    \
+		    $(OBJ_DIR)classic_list.o \
+			$(OBJ_DIR)graphic_dump.o \
 
 
 all: test_list.exe
@@ -27,6 +29,9 @@ $(OBJ_DIR)test_list.o:    $(SRC_DIR)test_list.cpp    $(INCLUDES)
 	$(CXX) -c $< -o $@ $(CXX_FLAGS)
 
 $(OBJ_DIR)classic_list.o:         $(SRC_DIR)classic_list.cpp         $(INCLUDES) 
+	$(CXX) -c $< -o $@ $(CXX_FLAGS)
+
+$(OBJ_DIR)graphic_dump.o:         $(SRC_DIR)graphic_dump.cpp         $(INCLUDES) 
 	$(CXX) -c $< -o $@ $(CXX_FLAGS)
 
 
